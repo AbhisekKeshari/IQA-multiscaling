@@ -43,5 +43,17 @@ First, you need to specify variables in "test.py"
 After those settings, you can run the inference code by running "test.py"
 - python3 test.py (execution code)
 
-# Acknolwdgements
-We refer to the following website to implement the transformer (https://paul-hyun.github.io/transformer-01/)
+
+## Changes required at config part of train.py(for training) and test.py(for testing):
+
+**Change the value of scale to :**
+
+* 1 for training on actual image
+* 0.5 for training on upscaled image by factor two
+* 2 for training on downscaled image by factor two
+* 3 for training on downscaled image by factor three
+
+**Methodology**:
+
+* Four instances are trained separately with respective scale value, and results are calculated separately.
+* Final result is being computed by averaging the results from four different scaled images, i.e. for scale value 1,0.5,2 and 3.
